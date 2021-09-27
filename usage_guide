@@ -1,0 +1,60 @@
+This is a guide for how to use the prep work and analysis R scripts in this repository.
+
+First ensure that you have all requisite data downloaded from the proper repositories. This includes:
+
+1. Treehouse Tumor Compendium v11 Public PolyA April 2020 clinical data
+2. Treehouse Tumor Compendium v11 Public PolyA April 2020 TPM data
+3. Treehouse Tumor Compendium v11 Public PolyA April 2020 expected counts data
+4. Treehouse Cell Line Compendium v2 December 2019 clinical data
+5. Treehouse Cell Line Compendium v2 December 2019 TPM data
+6. Broad Institute CCLE Annotations file ("Cell_lines_annotations_20181226.txt")
+
+Treehouse data is available at: https://treehousegenomics.soe.ucsc.edu/public-data/
+Broad Institute data is available at: https://depmap.org/portal/download/ (go to all downloads, then search "annotations" under "file" to find it easily)
+
+Then, open ped_prep_work_reviwed.R
+
+Ensure you have installed all packages shown at the top (lines 1-15). Use install.packages("package") and library(package) if you need any of them.
+
+You will need to change some directory locations depending on where you have put the downloaded files. 
+Make the proper adjustments to do this and set your working directory properly.
+Such changes need to be made on lines 19, 25, 28, 31, 34, and 52.
+
+Note that the data on lines 37, 42, 46, and 49 will not be generated until some code in this file has been run.
+When the data is generated, ensure that the paths on these lines are correct.
+
+To start, run lines 1-34, and line 52. This loads in all necessary data and packages.
+
+Next, run the code block that generates tumorMeta. This spans lines 131 to 234. If desired, change the output location for the CSV generated on line 234.
+Then, ensure that the output CSV location matches the location it would be read in on line 37.
+
+Next, run the code block that generates pedData. This spans lines 240 to 264. Change the output location on line 258 if desired.
+Then, ensure that the output CSV location matches the location it would be read in on line 46.
+
+Next, run the code block that generates cellMetaV2. This spans lines 59 to 103. If desired, change the output location for the CSV on line 95.
+Then, ensure that the output CSV location matches the location it would be read in on line 42.
+
+Finally, run the code block that generates cellData. This spans lines 117-119. If desired, change the output location for the CSV on line 119.
+Then, ensure that the output CSV location matches the location it would be read in on line 49.
+
+
+Now all input data for the analysis script should be ready.
+Open ped_analysis_reviewed.R
+
+To use the analysis script, first change file paths as necessary to set the working directory on line 28 and to load the data you just generated.
+File path locations should be checked and changed if necessary on lines 34, 39, 43, and 46.
+
+If this is your first time running the script, uncomment lines 254 to 257.
+Make sure the file location on line 254 matches where you put the Tumor Compendium expected counts data.
+Run lines 34-35 and 254-257. This will generate a smaller CSV that contains expected counts data for medulloblastoma tumor samples only.
+Ensure the paths on lines 262 and 257 match. You can then re-comment lines 254 to 257. 254-257 should not need to be run again as long as the CSV it generated is present.
+
+Ensure also that the file paths on lines 923, 1026, and 1066 all correspond to the correct files (all tumor expected counts, clinical data, and expected counts, respectively).
+
+Throughout the entire file, ensure that PDF(), saveRDS(), jpeg(), write.table(), and any other similar functions are outputting to locations that you desire.
+The simplest way to achieve this is to make "Intermediate_Data" and "Results" folders in your working directory.
+
+Check that you have all packages required at the top of the script (lines 1-22) and install/load them if you are missing any.
+
+Now, you should be able to run the entire analysis script.
+Results will be in the results folder (or wherever else you specified), with some supplementnal files in the Intermediate_Data folder.
