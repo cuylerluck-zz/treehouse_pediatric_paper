@@ -87,7 +87,8 @@ ui <- fluidPage(
                         tags$h2(),
                         downloadButton("downloadData_cancer", "Download correlations of selected tumor type with all cell lines"),
                         tags$h2(),
-                        downloadButton("downloadData_cancer_matched", "Download correlations of selected tumor type with matched cell lines")
+                        downloadButton("downloadData_cancer_matched", "Download correlations of selected tumor type with matched cell lines"),
+                        tags$h2()
                       ),
                       mainPanel(
                         tags$h2("PCAs of uncorrected (left) and ComBat corrected (right) tumor samples"),
@@ -96,7 +97,7 @@ ui <- fluidPage(
                       
                       mainPanel(
                         tags$h2("Violin plots ranked by median correlation with cell line TCGA Code (left) or with the top 10 individual cell lines (right)"),
-                        withSpinner(plotOutput("violins", height = "500px"), type = 5)
+                        withSpinner(plotOutput("violins", height = "500px", width = "1500px"), type = 5)
                         
                       ),
                       
@@ -107,7 +108,10 @@ ui <- fluidPage(
                       ),
                       
                       mainPanel(
+                        
                         tags$h2("Median correlations between disease-specific tumor samples and all cell lines"),
+                        downloadButton("downloadData_cancer_corrs", "Download median correlations of selected tumor type with all cell lines"),
+                        
                         withSpinner(DTOutput("table_all_corrs"), type = 5)
                       )
                       
@@ -120,7 +124,7 @@ ui <- fluidPage(
                        mainPanel(
                          tags$h2("PCA of medulloblastoma expected counts"),
                          tags$h4("uses the top 5000 most variable genes across all samples"),
-                         withSpinner(plotlyOutput("medullo_counts", width = "500px"),type=5)
+                         withSpinner(plotlyOutput("medullo_counts", width = "700px", height = "700px"),type=5)
                         
                        ),
                        
@@ -129,8 +133,15 @@ ui <- fluidPage(
                          withSpinner(plotOutput("evolcano", width = "1200px", height = "800px"), type = 5)
                        ),
                        
+                       
+                       
+                       
                        mainPanel(
+                         
                          tags$h2("Look up fold change and p-value for your favorite gene"),
+                         tags$h2(),
+                         downloadButton("downloadData_medullo_volcano", "Download the data in this table"),
+                         tags$h2(),
                          withSpinner(DTOutput("evolcano_table"), type = 5)
                        ),
                        
@@ -290,7 +301,8 @@ server <- function(input, output) {
     
     medullo_sites = medullo_sites %>% tibble::rownames_to_column("th_sampleid")
     
-    medullo_counts_pca_object = ggbiplot(medullo_counts_pca, var.axes = FALSE, groups = medullo_sites$site) + scale_color_manual(values=manualcolors[10:20])
+    medullo_counts_pca_object = ggbiplot(medullo_counts_pca, var.axes = FALSE, groups = medullo_sites$site) + 
+      scale_color_manual(values=manualcolors[10:20])
 
     medullo_counts_pca_plotly = ggplotly(medullo_counts_pca_object)
     medullo_counts_pca_plotly$x$layout$annotations[1][[1]]$text = ""
@@ -453,6 +465,24 @@ server <- function(input, output) {
     }
     
   )
+  
+  output$downloadData_medullo_volcano <- downloadHandler(
+    filename = "medullo_volcano_data.csv",
+    content = function(file) {
+      write.csv(readRDS(file = "results/medullo_evolcano.RDS"), file, quote = F)
+    }
+    
+  )
+  
+  output$downloadData_cancer_corrs <- downloadHandler(
+    filename = paste(input$cancer,"_correlations_by_cell_line.csv", sep = ""),
+    content = function(file) {
+      write.csv(readRDS(paste("results/", input$cancer, "/", input$cancer, "_all_cell_lines_corrs_table.RDS", sep = "")), file, quote = F)
+    }
+    
+  )
+  
+  
   
   output$graphical_abstract <- renderImage({
     list(src = "temp_graphical_abstract.png",
