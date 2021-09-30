@@ -15,6 +15,7 @@ Broad Institute data is available at: https://depmap.org/portal/download/ (go to
 Then, open ped_prep_work_reviwed.R
 
 Ensure you have installed all packages shown at the top (lines 1-15). Use install.packages("package") and library(package) if you need any of them.
+The version number of packages used when these scripts were originally run are commented next to each package.
 
 You will need to change some directory locations depending on where you have put the downloaded files. 
 Make the proper adjustments to do this and set your working directory properly.
