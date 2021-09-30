@@ -1,25 +1,25 @@
-library(data.table)
-library(pheatmap)
-library(ggplot2)
-library(edgeR)
-library(dplyr)
-library(tidyr)
-library(ggbiplot)
-library(gmodels)
-library(umap)
-library(corrplot)
-library(grDevices)
-library(sva)
-library(ggpubr)
-library(gridExtra)
-library(umap)
-library(ggrepel)
-library(RColorBrewer)
-library(EnhancedVolcano)
-library(clusterProfiler)
-library(biomaRt)
-library(stringr)
-library(org.Hs.eg.db)
+library(data.table) #version 1.14.0
+library(pheatmap) #version 1.0.12
+library(ggplot2) #version 3.3.5
+library(edgeR) #version 3.30.3
+library(dplyr) #version 1.0.7
+library(tidyr) #version 1.1.3
+library(ggbiplot) #version 0.55
+library(gmodels) #version 2.18.1
+library(umap) #version 0.2.7.0
+library(corrplot) #version 0.90
+library(grDevices) #version 4.0.3
+library(sva) #version 3.36.0
+library(ggpubr) #version 0.4.0
+library(gridExtra) #version 2.3
+library(ggrepel) #version 0.9.1
+library(RColorBrewer) #version 1.1-2
+library(EnhancedVolcano) #version 1.6.0
+library(clusterProfiler) #version 3.16.1
+library(biomaRt) #version 2.44.4
+library(stringr) #version 1.4.0
+library(org.Hs.eg.db) #version 3.11.4
+
 
 #ensure graphics device is cleared or else plots may fail
 dev.off()

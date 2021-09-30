@@ -1,18 +1,18 @@
-library(data.table)
-library(pheatmap)
-library(gplots)
-library(ggplot2)
-library(pheatmap)
-library(viridis)
-library(edgeR)
-library(dplyr)
-library(tidyr)
-library(ggbiplot)
-library(gmodels)
-library(umap)
-library(corrplot)
-library(grDevices)
-library(sva)
+library(data.table) #version 1.14.0
+library(pheatmap) #version 1.0.12
+library(gplots) #version 3.1.1
+library(ggplot2) #version 3.3.5
+library(pheatmap) #version 1.0.12
+library(viridis) #version 0.6.1
+library(edgeR) #version 3.30.3
+library(dplyr) #version 1.0.7
+library(tidyr) #version 1.1.3
+library(ggbiplot) #version 0.55
+library(gmodels) #version 2.18.1
+library(umap) #version 0.2.7.0
+library(corrplot) #version 0.90
+library(grDevices) #version 4.0.3
+library(sva) #version 3.36.0
 
 
 #Set working directory as needed

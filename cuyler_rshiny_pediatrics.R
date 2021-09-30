@@ -1,19 +1,19 @@
-library(shiny)
-library(ggplot2)
-library(pheatmap)
-library(viridis)
-library(plotly)
-library(RColorBrewer)
-library(shinycssloaders)
-library(shinythemes)
-library(data.table)
-library(ggbiplot)
-library(gridExtra)
-library(tidyr)
-library(heatmaply)
-library(DT)
-library(EnhancedVolcano)
-library(ggpubr)
+library(shiny) #version 1.6.0
+library(ggplot2) #version 3.3.5
+library(pheatmap) #version 1.0.12
+library(viridis) #version 0.6.1
+library(plotly) #version 4.9.4.1
+library(RColorBrewer) #version 1.1-2
+library(shinycssloaders) #version 1.0.0
+library(shinythemes) #version 1.2.0
+library(data.table) #version 1.14.0
+library(ggbiplot) #version 0.55
+library(gridExtra) #version 2.3
+library(tidyr) #version 1.1.3
+library(heatmaply) #version 1.2.1
+library(DT) #version 0.19
+library(EnhancedVolcano) #version 1.6.0
+library(ggpubr) #version 0.4.0
 
 
 
