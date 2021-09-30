@@ -485,10 +485,10 @@ server <- function(input, output) {
   
   
   output$graphical_abstract <- renderImage({
-    list(src = "temp_graphical_abstract.png",
+    list(src = "Sirota Visual Methods.png",
          alt = "Graphical abstract",
          width = "auto",
-         height = "350%"
+         height = "650%"
     )
   }, deleteFile = FALSE)
   
