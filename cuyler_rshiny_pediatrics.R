@@ -485,7 +485,7 @@ server <- function(input, output) {
   
   
   output$graphical_abstract <- renderImage({
-    list(src = "Sirota Visual Methods.png",
+    list(src = "Sirota_Visual_Methods.png",
          alt = "Graphical abstract",
          width = "auto",
          height = "650%"
